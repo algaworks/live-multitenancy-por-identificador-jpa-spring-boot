@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="pt-br"
+    xmlns:th="http://www.thymeleaf.org"
+    xmlns:layout="http://www.thymeleaf.org"
+    layout:decorator="~{layout}">
+<head>    
+    <title>Lista de clientes</title>
+</head>
+<body>        
+    <th:block layout:fragment="conteudo">
+        <section class="my-4">
+            <div class="container">
+                <h2>Lista de clientes</h2>
+            </div>
+        </section>
+    
+        <section>
+            <div class="container">
+                <div class="table-responsive">
+                    <table class="table table-bordered table-hover">
+                        <thead class="thead-light text-center">
+                            <tr>
+                                <th>Código</th>
+                                
+                                <th>Nome</th>
+                            </tr>
+                        </thead>
+    
+                        <tbody>
+                            <tr th:each="cliente: ${clientes}">
+                                <td class="text-center w-25"
+                                    th:text="${cliente.id}">1</td>
+                                    
+                                <td>
+                                    <a href="javascript:;" th:text="${cliente.nome}"
+                                        th:href="@{/clientes/{id}/editar(id=${cliente.id})}">Nome cliente</a>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+    </th:block>
+</body>
+</html>
